@@ -71,6 +71,7 @@ trim_trailing_whitespace = false
 ```
 
 # 如何编写一个响应式布局
+### 0. 常规编写方式
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -85,16 +86,36 @@ trim_trailing_whitespace = false
 </body>
 </html>
 ```
+### 1. 网页使用什么语言？
 ```html
-    <html lang="en">
+    <!-- lang 是 language 的缩写 -->
+    <!-- 在Chrome浏览器中，如果设置了en，Google会自定启动翻译功能 ；如果是盲人网站设置了en，可能读的不正确-->
+    <html lang="en"> 
+    <!-- zh-CN 支持中文简体 -->
     <html lang="zh-CN">
+    <!-- zh 支持更广泛的中文字体 -->
     <html lang="zh">
 ```
-
+### 2. 网页的 title 和字符集设置顺序
 ```html
     <title>我可能是乱码</title>
     <meta charset="UTF-8">
     <!-- 两个反过来写可能网站标题会出现乱码 -->
 ```
+### 3. 文档兼用性
+```html
+    <!-- 代表 IE 的文档兼容性：ie=edge 表示强制用最新的IE浏览器模式渲染页面 -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 如果可能，就使用 IE7 的规范进行显示 -->
+    <meta http-equiv="X-UA-Compatible" content="ie=EmulateIE7">
+    <!-- IE11已经被弃用了 -->
+```
 
 
+```html
+<!-- 在 html 代码中，gt 代表尖括号向右，即大于号；lt 代表尖括号向左，即小于号 -->
+<!-- gte e代表equal，即大于等于；lte 即小于等于 -->
+<!--[if gt/lt/gte/lte IE8]> 
+<p> 什么时候显示我 </p>
+<![endif] -->
+```
