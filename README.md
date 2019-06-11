@@ -2,6 +2,8 @@
 响应式布局 -- P2P 网站
 
 # 什么是响应式？
+
+## 响应式的提出
 ---
 《互联网设计之道》
 1. 弹性布局（流动性、自适应性） -- 优化程度有限
@@ -9,14 +11,52 @@
 3. 流动网格、弹性图片和媒介查询 -- 响应式互联网设计三大技术
 ---
 
-# 响应式网站设计原则
+## 响应式概念的提出
+> 响应式网站是一个设计理念，它是多项技术的综合体，是一套设计
+- flexible grid layout 弹性网格布局
+- flexible image 弹性图片
+- media queries 媒体查询
+
+### 响应式网站的优点
+- 减少工作量
+  - 网站、设计、代码、内容都只需要一份
+  - 多出来的工作量只是 JS脚本、CSS样式 的一些改动 
+- 节省时间
+- 每个设备都能得到正确的设计
+- 搜索优化
+
+### 响应式网站的缺点
+- 会加载更多的样式和脚本资源
+- 设计比较难精确定位和控制
+- 老版浏览器兼容不好
+
+## 国内外主流的浏览器
+IE/Edge Chrome Safari/iOS Safari 360(极速-webkit) Firefox Android browser QQ(微信-X5) UC
+Opera 猎豹 搜狗浏览器
+浏览器使用统计：gs.statcounter.com(按区域统计) caniuse.com/usage-table(全世界)
+
+# 媒体查询
+```html
+
+```
+# 媒体属性简介
+width: 视口宽度
+height: 视口宽度
+width: 视口宽度
+width: 视口宽度
+
+
+
+## 响应式网站设计原则
 1. 渐进增强
 2. 优雅降级 - 针对用户体验来讲，适用于网站设计，尤其适用于响应式网站设计
    
 
 ```css
-@media only screen and (min-device-width:320px) and (max-device-width:480px) and (-webkit-min-device-pixel-ratio:2){
-
+@media only screen and 
+    (min-device-width:320px) and (max-device-width:480px) 
+    and (-webkit-min-device-pixel-ratio:2){
+        ...
 }
 ```
 
@@ -119,3 +159,12 @@ trim_trailing_whitespace = false
 <p> 什么时候显示我 </p>
 <![endif] -->
 ```
+
+## HTML5 语义化
+> article 是 section 的子集，对 section 一个特殊的描述，语义很有意义。
+> nav 也是一个特殊的 section
+
+## 规范
+> 一般都使用 class 定义样式，id 一般用于 js 快速的区别和获取元素 class，一般都用中横线分隔，id 一般都使用小驼峰名称法
+
+> 建议：必不可少的图片使用 `<img>` 引入，如 logo，可有可无的装饰性图片可以用标签的 style 作为背景引入
