@@ -37,20 +37,120 @@ Opera 猎豹 搜狗浏览器
 
 # 媒体查询
 ```html
-
+<link rel="stylesheet" type="text/css" href="site.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="site.css" media="print"/>
 ```
-# 媒体属性简介
-width: 视口宽度
-height: 视口宽度
-width: 视口宽度
-width: 视口宽度
+
+## CSS3 screen/print
+
+## and or only not
+```css
+@media all and (min-width:800px) and (orientation:landscape){
+    ...  
+    条件为真， 则应用
+    条件为假， 则不应用
+    <!-- and 代表所有媒体 -->
+}
+@media not all (monochrome){} ==》@media not (all (monochrome)){} 
+@media not screen and (color), print and (color){} ==》
+@media not screen and (color) or print and (color){} ==》
+@media (not (screen and color)), print and (color){}
+
+/* only:仅仅只有防止老旧的浏览器，不支持带媒体属性的查询，而应用到给定的样式 */
+media="only screen and (min-width:401px) and (max-width:600px)" 
+/* 旧浏览器解析: media="only" */
+media="only screen and (min-width:401px) and (max-width:600px)" 
+/* 旧浏览器解析: media="screen" */
+/* only 最好不要省略 */
+```
+
+
+## 媒体属性简介
+- width: 视口宽度
+- height: 视口宽度
+- device-width: 渲染表面的宽度，就是设备屏幕的宽度
+- device-height: 渲染表面的高度，就是设备屏幕的高度
+- orientation: 检查设备处于横向还是纵向
+- aspect-ratio: 基于视口宽度和高度的宽高比。width/height 如 16/9 4/3
+- device-aspect-ratio: 渲染表面的宽度，就是设备屏幕的宽度
+- color:每种颜色的位数bits，如min-color:16位，8位
+- resolution:检测屏幕或打印机的分辨率。如：min-resolution:300dpi
+
+## viewport 视口
+PC端、手机端
+- 布局视口: layout viewport
+- 可视视口: 相当于放大镜
+- 理想视口:
+
+```html
+<meta name="viewport" content="width=device-width"/>
+<!-- viewport 这里是理想视口，如果不设置 content 属性，布局视口的宽度是厂商的默认值，如果指定了 content 属性，布局视口成为理想视口。很多网站直接禁用了用户缩放，默认放大倍数为 1 -->
+```
+
+**百度**
+```html
+<meta name="viewport" content="width=device-width,
+    minimun-scale=1.0,   <!--最小的缩放比例-->
+    maximun-scale=1.0,   <!--最小的缩放比例-->
+    user-scalable=no"   <!-- 禁用了用户缩放 -->
+/>
+```
+
+
+## 网站开发前的工作
+
+开发前 --> 需求调研(解决什么) --> UI设计、评审(面向受众) --> 原型设计(如何呈现，如何组织)
+
+## 怎样分析设计图
+1. 和设计师交流网站如何交互
+2. 是否有相应的设计规范(字体、颜色、字号、间距等)
+3. 什么地方必须100%还原，什么地方可以灵活处理
+- 建议
+  - 设计师有前端功底
+  - 前端有设计师功底
+  - 沟通方便
+  
+|PC、平板|小平板、大屏手机|移动手机|
+| ----- | ------------- | ----- |
+| 大屏幕 | 中屏幕 | 小屏幕 |
 
 
 
 ## 响应式网站设计原则
-1. 渐进增强
-2. 优雅降级 - 针对用户体验来讲，适用于网站设计，尤其适用于响应式网站设计
-   
+- 兼容性选择
+  1. 渐进增强 progressive enhancement
+  2. 优雅降级 - graceful degradation 针对用户体验来讲，适用于网站设计，尤其适用于响应式网站设计（*）
+
+- 屏幕选择
+> 小屏幕 vs 大屏幕 （看项目需要，一般是先PC再移动）
+
+- 浏览器选择
+> 先对最新版 Chrome 进行调试，Chrome 的调试简单，使用的占比高
+
+- 断点选择
+> 不管设备大小，应该包含相同的内容，根据设备大小不同，显示不同的内容
+> 举个栗子
+
+
+```css
+/* iPhone 4 and 4S */
+@media only screen
+    and (min-device-width:320px)
+    and (max-device-width:480px)
+    and (-webkit-min-device-pixel-ratio:2){
+        ...
+    }
+
+/* iPhone 5 and 5S */
+@media only screen
+    and (min-device-width:320px)
+    and (max-device-width:568px)
+    and (-webkit-min-device-pixel-ratio:2){
+        ...
+    }
+```
+
+
 
 ```css
 @media only screen and 
@@ -63,13 +163,11 @@ width: 视口宽度
 
 ## 文件目录
 ### 1. 为什么要组织项目目录结构？
-
-> jhujuh
-
 ---
 1. 约定优于配置（convention over configuration）
 2. 约定代码结构或命名规范来减少配置数量
 ---
+
 ### 2. 如何组织项目目录结构
 - doc
 - src
@@ -168,3 +266,9 @@ trim_trailing_whitespace = false
 > 一般都使用 class 定义样式，id 一般用于 js 快速的区别和获取元素 class，一般都用中横线分隔，id 一般都使用小驼峰名称法
 
 > 建议：必不可少的图片使用 `<img>` 引入，如 logo，可有可无的装饰性图片可以用标签的 style 作为背景引入
+
+
+
+# 原型设计和切图
+纸笔、axure、sketch
+
