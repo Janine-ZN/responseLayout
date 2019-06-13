@@ -267,8 +267,6 @@ trim_trailing_whitespace = false
 
 > 建议：必不可少的图片使用 `<img>` 引入，如 logo，可有可无的装饰性图片可以用标签的 style 作为背景引入
 
-
-
 # 原型设计和切图
 纸笔、axure、sketch
 
