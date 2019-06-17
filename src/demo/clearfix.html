@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>清楚浮动</title>
+    <style>
+        .container {
+            /* float: left; 给浮动元素添加内部浮动的效果，可以清除浮动；父元素变成浮动元素，子元素就会回到父元素中。假如父元素外还有浮动，这种方法就很雷人 */
+            /* overflow: hidden/auto; 浮动元素又会回到容器中 */
+            background-color: #ccc
+        }
+
+        h1,
+        p {
+            float: left;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        .clearfix::after {
+            content: " ";
+            display: table;
+            clear: both;
+        }
+
+        .clearfix::after {
+            content: " ";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden
+        }
+
+        .clearfix {
+            zoom: 1;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container clearfix">
+        <h1>test</h1>
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt ipsum illo harum est voluptatibus quidem
+            odio magnam culpa tempore ullam maxime dignissimos omnis minima at molestias, numquam totam quod
+            praesentium?
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt ipsum illo harum est voluptatibus quidem
+            odio magnam culpa tempore ullam maxime dignissimos omnis minima at molestias, numquam totam quod
+            praesentium?
+        </p>
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt ipsum illo harum est voluptatibus quidem
+            odio magnam culpa tempore ullam maxime dignissimos omnis minima at molestias, numquam totam quod
+            praesentium?
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt ipsum illo harum est voluptatibus quidem
+            odio magnam culpa tempore ullam maxime dignissimos omnis minima at molestias, numquam totam quod
+            praesentium?
+        </p>
+        <!-- 给代码多加了一个空标签。代码多了，每个页面都要写吗？导致维护负担 -->
+        <!-- <div style="clear:both"></div> -->
+    </div>
+</body>
+
+</html>

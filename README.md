@@ -270,3 +270,4 @@ trim_trailing_whitespace = false
 # 原型设计和切图
 纸笔、axure、sketch
 
+### 清除浮动 - BFC
